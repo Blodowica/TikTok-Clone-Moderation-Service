@@ -1,4 +1,6 @@
 
+using TikTok_Clone_Moderation_Service.Services;
+
 namespace TikTok_Clone_Moderation_Service
 {
     public class Program
@@ -13,6 +15,9 @@ namespace TikTok_Clone_Moderation_Service
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IRabbitMQConsumerService, RabbitMQConsumerService>();
+            builder.Services.AddScoped<IRabbitMQPublisherService, RabbitMQPublisherService>();
+
 
             var app = builder.Build();
 
