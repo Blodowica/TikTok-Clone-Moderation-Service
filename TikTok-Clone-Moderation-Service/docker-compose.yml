@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  
+  viralloopmoderator:
+   image: tikttokclone-moderation-service:latest
+   ports:
+      - "32837:8080"  # Expose your application port
+      - "32836:8081"
+   networks:
+      - viralloopdockernetwork  # Connect your application to custom network
+   environment:
+      - ASPNETCORE_ENVIRONMENT=Local
+      - ASPNETCORE_URLS=http://+:8080
+      
+  RabbitMQService:
+   image: rabbitmq:3.13-management
+   ports:
+   - "15672:15672"
+   -  "5672:5672"
+   networks:
+   - viralloopdockernetwork
+
+
+networks:
+  viralloopdockernetwork:
+    driver: bridge

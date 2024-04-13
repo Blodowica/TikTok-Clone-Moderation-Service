@@ -24,9 +24,9 @@ namespace TikTok_Clone_Moderation_Service
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+            }
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
 
             app.UseHttpsRedirection();
 
